@@ -1,1 +1,1 @@
-# Codechef-Long-Challenge-Submissions-Hider
+# Codechef Long Challenge Submissions Hider

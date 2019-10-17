@@ -7,9 +7,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     {
 
 
-    	 	$('td.num').css('opacity','0');
-    	 	$('#contest-ranks').css('opacity','0');
-    	 	
+    	 	$('td.num').css('display','none');
+    	 	//$('#contest-ranks').css('display','none !important');
+    			 	
     }
 
 });

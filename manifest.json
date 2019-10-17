@@ -1,6 +1,6 @@
 {
 	"manifest_version" : 2,
-	"page" : "Codechef Submissions Hider",
+	"name" : "Codechef Submissions Hider",
 	"version" : "1.0",
 	"description" : "Hides total submissions of a problem in Codechef long challenge",
 	"icons" : {
@@ -15,5 +15,23 @@
 		"default_icon" : "icon16.png",
 		"default_popup": "popup.html",
 		"default_title" : "Submissions Hider"
-	}
+	},
+
+
+	"background": {
+	    "scripts": ["eventPage.js"],
+	    "persistent": false
+  	},
+
+  "content_scripts":[
+   	{
+      "matches": ["https://www.codechef.com/*"],
+      "js": ["content.js", "jquery-3.4.1.min.js"]
+    }
+   ],
+
+  "permissions": [
+    "tabs",
+    "https://www.codechef.com/*"
+   ]
 }

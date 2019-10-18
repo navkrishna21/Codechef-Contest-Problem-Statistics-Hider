@@ -33,6 +33,7 @@
 
   "permissions": [
   	"storage",
+  	"notifications",
     "tabs",
     "https://www.codechef.com/*"
    ]

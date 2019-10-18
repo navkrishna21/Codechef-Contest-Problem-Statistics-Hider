@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 
 		        $('td.num').css('display','none'); 
 				$('#contest-ranks > p').css('display','none');	
-		        
+		        chrome.runtime.sendMessage({todo: "notify"});
 		        observer.disconnect();
 		      };
 		    }

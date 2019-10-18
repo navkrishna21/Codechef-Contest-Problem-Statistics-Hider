@@ -17,6 +17,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
             });
         });
     }
+    else if(request.todo == "notify"){
+    	var notifOptions = {
+			type : 'basic',
+			iconUrl : 'icon48.png',
+			title : 'Hiding Enabled',
+			message : 'No. of Submissions, Accuracy and your Rank are hidden' 
+		};
+
+		chrome.notifications.create('hiding_notif',notifOptions);
+    }
 });
 
 

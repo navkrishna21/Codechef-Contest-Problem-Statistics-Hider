@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 		
 					if(state.toggle=='on'){
 
-				       chrome.tabs.sendMessage(tabs[0].id, {todo: "hideSubmissions"});
+				       chrome.tabs.sendMessage(tabs[0].id, {todo: "hideOnLoad"});
 				       
 					}
 				})

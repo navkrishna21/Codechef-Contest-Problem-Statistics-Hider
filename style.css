@@ -60,3 +60,15 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+
+p{
+  min-width: 100px;
+  min-height:20px; 
+  text-align: center;
+}
+
+.container{
+  text-align: center;
+}

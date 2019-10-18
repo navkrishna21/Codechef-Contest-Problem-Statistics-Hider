@@ -14,33 +14,50 @@ $(function(){
 
     	if(this.checked) {
     		
-    		chrome.storage.sync.set({'toggle' : 'on' },function(){
 
-	    		chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
+			chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
 
-	            	chrome.tabs.sendMessage(tabs[0].id, {todo: "hideSubmissions"},function(){
-	            		$('#status').text('Submissions are hidden')
-	            	});
-	        	
+	        	chrome.tabs.sendMessage(tabs[0].id, {todo: "hideSubmissions"},function(){
+	        		
+	        		var last_error=console.log(chrome.runtime.lastError);
+
+	        		if(last_error){
+	        			console.log(last_error.message);
+	        		}
+	        		else{
+	        			
+	        			chrome.storage.sync.set( {'toggle' : 'on' } ,function(){
+	        				$('#status').text('Submissions are hidden');
+	        			});
+	        		}
+	        		
+	        		
 	        	});
-
-    		});
+	    	
+	    	});
 
     	}
     	else{
 
-    		chrome.storage.sync.set({'toggle' : 'off' } ,function(){
+    		chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
 
-	    		chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
+            	chrome.tabs.sendMessage(tabs[0].id, {todo: "showSubmissions"},function(){
 
-	            	chrome.tabs.sendMessage(tabs[0].id, {todo: "showSubmissions"},function(){
-	            		$('#status').text('Toggle to hide submissions')
-	            	});
-	        	
-	        	});
+            		var last_error=console.log(chrome.runtime.lastError);
 
-    		});
+	        		if(last_error){
+	        			console.log(last_error.message);
+	        		}
+	        		else{
 
+	        			chrome.storage.sync.set({'toggle' : 'off' } ,function(){
+       
+            				$('#status').text('Toggle to hide submissions')
+            			});
+	        		}
+            	});
+        	
+        	});
     	}
 	});
 

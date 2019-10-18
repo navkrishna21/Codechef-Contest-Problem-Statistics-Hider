@@ -8,18 +8,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 
 	 	$(document).ready(function() {
 			
-			$('td.num').css('display','none');    
-		
+			$('td.num').css('display','none'); 
+			
+			//$('#contest-ranks > p').css('color','transparent'); 
+			//$('#contest-ranks > p').css('text-shadow','0 0 10px rgba(0,0,0,0.5)'); 
+
+			$('#contest-ranks > p').css('display','none');
 		});
 					 	
-    	 	//$('#contest-ranks').css('display','none !important');			 	
+    	 			 	
     }
     else if (request.todo == "showSubmissions")
     {
 
 	 	$(document).ready(function() {
 			
-			$('td.num').css('display','table-cell');    
+			$('td.num').css('display','table-cell');
+			$('#contest-ranks > p').css('display','block');    
 		
 		});
 					 	

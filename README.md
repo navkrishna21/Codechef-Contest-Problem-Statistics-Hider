@@ -25,3 +25,17 @@ To overcome this problem, I have built a chrome extension to hide these stats of
 * The state of the toggle button is saved, hence you do not need to enable it again and again when you restart your browser.
 * Go to any contest page of codechef.com. If the toggle button is enabled, you will see that the problem stats of all problems are hidden.
 
+
+# Screenshots
+
+## Toggle Off
+
+![Image](./screenshots/toggle-off.png)
+
+## Toggle On
+
+![Image](./screenshots/toggle-on.png)
+
+## Notification
+
+![Image](./screenshots/notification.png)

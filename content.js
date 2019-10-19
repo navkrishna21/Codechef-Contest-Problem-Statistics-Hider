@@ -30,12 +30,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 
 
     }
-    else if (request.todo == "hideSubmissions")
+    else if (request.todo == "hideStatistics")
     {
 		$('td.num').css('display','none'); 
 		$('#contest-ranks > p').css('display','none');				 	 			 	
     }
-    else if (request.todo == "showSubmissions")
+    else if (request.todo == "showStatistics")
     {
 
     	

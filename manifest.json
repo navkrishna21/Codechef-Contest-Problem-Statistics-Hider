@@ -1,8 +1,8 @@
 {
 	"manifest_version" : 2,
-	"name" : "Codechef Submissions Hider",
+	"name" : "Codechef Contest Problem Statistics Hider",
 	"version" : "1.0",
-	"description" : "Hides total submissions of a problem in Codechef long challenge",
+	"description" : "Hides total submissions and accuracy of every problem in Codechef Contests",
 	"icons" : {
 
 		"128" : "icon128.png",
@@ -14,7 +14,7 @@
 
 		"default_icon" : "icon48.png",
 		"default_popup": "popup.html",
-		"default_title" : "Codechef Contest Submissions Hider"
+		"default_title" : "Codechef Contest Problem Statistics Hider"
 	},
 
 

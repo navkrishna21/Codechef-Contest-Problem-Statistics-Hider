@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     	var notifOptions = {
 			type : 'basic',
 			iconUrl : 'icon48.png',
-			title : 'Hiding Enabled',
+			title : 'Problem Stats Hidden',
 			message : 'No. of Submissions, Accuracy and your Rank are hidden' 
 		};
 

@@ -21,7 +21,6 @@ To overcome this problem, I have built a chrome extension to hide these stats of
 # Usage
 
 * Since the extension is a page action extension, it will only work on [codechef.com](https://www.codechef.com)
-* Click on the extension for the popup with the Toggle button.
 * You can enable and disable hiding the problem stats using the toggle button in the extension popup.
 * The state of the toggle button is saved, hence you do not need to enable it again and again when you restart your browser.
 * Go to any contest page of codechef.com. If the toggle button is enabled, you will see that the problem stats of all problems are hidden.

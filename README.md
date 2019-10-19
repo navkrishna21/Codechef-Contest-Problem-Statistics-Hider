@@ -1,5 +1,5 @@
 # Codechef Contest Problem Statistics Hider
-Chrome Extension to hide the submissions and accuracy of problems in Codechef contests to prevent participants from demotivation
+Chrome Extension to hide the submissions and accuracy of problems in Codechef contests to save participants from demotivation
 
 # Description
 

@@ -1,23 +1,58 @@
 $(function(){
 
-	chrome.storage.sync.get('toggle' , function(state){
-		
-		if(state.toggle =='on'){
-			$('#status').text('Problem statistics are hidden');
-			$('.toggle-button').prop('checked', true);
+	chrome.storage.sync.get('hide_state' , function(hide_button){
+
+		if(hide_button.hide_state =='on'){
+			$('#hidebutton-status').text('Problem statistics are hidden');
+			$('#hide-button').prop('checked', true);
 		}
 		else
-			$('#status').text('Toggle to hide problem statistics');
+			$('#hidebutton-status').text('Toggle to hide problem statistics');
 	})
 
-	$(".toggle-button").change(function() {
+
+	chrome.storage.sync.get('shuffle_state' , function(shuffle_button){
+		
+		if(shuffle_button.shuffle_state == 'on'){
+			$('#shufflebutton-status').text('Enabled');
+			$('#shuffle-button').prop('checked', true);
+		}
+		else
+			$('#shufflebutton-status').text('Disabled');
+	})
+
+
+	$('#shuffle-button').change(function() {
+		
+		if(this.checked){
+			chrome.storage.sync.set( {'shuffle_state' : 'on' },function(){
+				$('#shufflebutton-status').text('Enabled');
+			});
+
+		}
+		else{
+			chrome.storage.sync.set( {'shuffle_state' : 'off' },function(){
+				$('#shufflebutton-status').text('Disabled');
+			});
+		}
+	});
+
+	$("#hide-button").change(function() {
 
     	if(this.checked) {
     		
 
 			chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
 
-	        	chrome.tabs.sendMessage(tabs[0].id, {todo: "hideStatistics"},function(){
+				let shuffle="no";
+
+	        	if($('#shuffle-button').is(':checked')){
+
+	        		shuffle="yes"
+	        	}
+	        	
+
+	        	chrome.tabs.sendMessage(tabs[0].id, {todo: "hideStatistics", shuffle : shuffle},function(){
 	        		
 	        		var last_error=console.log(chrome.runtime.lastError);
 
@@ -26,8 +61,8 @@ $(function(){
 	        		}
 	        		else{
 	        			
-	        			chrome.storage.sync.set( {'toggle' : 'on' } ,function(){
-	        				$('#status').text('Problem statistics are hidden');
+	        			chrome.storage.sync.set( {'hide_state' : 'on' } ,function(){
+	        				$('#hidebutton-status').text('Problem statistics are hidden');
 	        			});
 	        		}
 	        		
@@ -50,9 +85,9 @@ $(function(){
 	        		}
 	        		else{
 
-	        			chrome.storage.sync.set({'toggle' : 'off' } ,function(){
+	        			chrome.storage.sync.set({'hide_state' : 'off' } ,function(){
        
-            				$('#status').text('Toggle to hide problem statistics')
+            				$('#hidebutton-status').text('Toggle to hide problem statistics')
             			});
 	        		}
             	});

@@ -72,3 +72,8 @@ p{
 .container{
   text-align: center;
 }
+
+
+#shufflebutton-status{
+  font-weight: 480;
+}

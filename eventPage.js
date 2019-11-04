@@ -5,11 +5,20 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
             
             chrome.pageAction.show(tabs[0].id,function(){
 
-            	chrome.storage.sync.get('toggle' , function(state){
+            	chrome.storage.sync.get('hide_state' , function(hide_button){
 		
-					if(state.toggle=='on'){
+					if(hide_button.hide_state=='on'){
 
-				       chrome.tabs.sendMessage(tabs[0].id, {todo: "hideOnLoad"});
+						chrome.storage.sync.get('shuffle_state' , function(shuffle_button){
+								
+							let shuffle = "no";
+							
+							if(shuffle_button.shuffle_state == 'on'){
+								shuffle= "yes"
+							}
+
+							chrome.tabs.sendMessage(tabs[0].id, {todo: "hideOnLoad",shuffle : shuffle});
+						})				       
 				       
 					}
 				})
@@ -17,12 +26,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
             });
         });
     }
-    else if(request.todo == "notify"){
+    else if(request.todo == "notify1" || request.todo == "notify2" ){
+    	
+    	let message =  'No. of Submissions, Accuracy and your Rank are hidden' 
+    	
+    	if(request.todo == "notify1")
+    		message += '\nThe Problems have been randomly rearranged'
+
     	var notifOptions = {
 			type : 'basic',
 			iconUrl : 'icon48.png',
 			title : 'Problem Stats Hidden',
-			message : 'No. of Submissions, Accuracy and your Rank are hidden' 
+			message : message
 		};
 
 		chrome.notifications.create('hiding_notif',notifOptions);

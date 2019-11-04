@@ -14,26 +14,19 @@ $(function(){
 	chrome.storage.sync.get('shuffle_state' , function(shuffle_button){
 		
 		if(shuffle_button.shuffle_state == 'on'){
-			$('#shufflebutton-status').text('Enabled');
 			$('#shuffle-button').prop('checked', true);
 		}
-		else
-			$('#shufflebutton-status').text('Disabled');
 	})
 
 
 	$('#shuffle-button').change(function() {
 		
 		if(this.checked){
-			chrome.storage.sync.set( {'shuffle_state' : 'on' },function(){
-				$('#shufflebutton-status').text('Enabled');
-			});
+			chrome.storage.sync.set( {'shuffle_state' : 'on' });
 
 		}
 		else{
-			chrome.storage.sync.set( {'shuffle_state' : 'off' },function(){
-				$('#shufflebutton-status').text('Disabled');
-			});
+			chrome.storage.sync.set( {'shuffle_state' : 'off' });
 		}
 	});
 

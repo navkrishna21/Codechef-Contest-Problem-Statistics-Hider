@@ -38,15 +38,15 @@
   transition: .4s;
 }
 
-input:checked + .slider {
+.toggle-button:checked + .slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+.toggle-button:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+.toggle-button:checked + .slider:before {
   -webkit-transform: translateX(17px);
   -ms-transform: translateX(17px);
   transform: translateX(27px);
@@ -64,7 +64,7 @@ input:checked + .slider:before {
 
 
 p{
-  min-width: 100px;
+  min-width: 140px;
   min-height:20px; 
   text-align: center;
 }
@@ -77,3 +77,51 @@ p{
 #shufflebutton-status{
   font-weight: 480;
 }
+
+.custom-checkbox + label {
+  display: block;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+.custom-checkbox + label:before {
+  content: "\2714";
+  border: 0.1em solid #000;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  padding-left: 0.2em;
+  padding-bottom: 0.3em;
+  padding-right: 0.05em;
+  margin-right: 0.5em;
+  vertical-align: bottom;
+  color: transparent;
+  transition: .2s;
+}
+
+.custom-checkbox {
+  display: none;
+}
+
+
+.custom-checkbox + label:active:before {
+  transform: scale(0);
+}
+
+.custom-checkbox:checked + label:before {
+  background-color: #2196F3;
+  border-color: #2196F3;
+  color: #fff;
+}
+
+hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+

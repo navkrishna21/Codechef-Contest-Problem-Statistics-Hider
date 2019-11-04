@@ -31,6 +31,10 @@ Also it has an option for shuffling the problems when hiding, which further prev
 
 # Screenshots
 
+## Popup
+
+![Image](./screenshots/popup.png)
+
 ## Toggle Off
 
 ![Image](./screenshots/toggle-off.png)

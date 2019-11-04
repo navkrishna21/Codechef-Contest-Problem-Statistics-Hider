@@ -2,12 +2,22 @@ var url_re = /^(http|https):\/\/(www.codechef|codechef)\.com\/[A-Z]+[0-9]*[A-B]*
 
 
 function shuffleRows(parent) {
+
     var rows = parent.children();
+    
+    
     for (var i = rows.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = rows[i];
-        rows.eq(i - 1).after(rows[j]);
-        rows.eq(j - 1).after(temp);
+   	    
+   	    var j = Math.floor(Math.random() * (i + 1));
+
+		var $elem1 = rows.eq(i),
+			$elem2 = rows.eq(j),
+		  	$placeholder = $("<tr><td></td></tr>");
+		
+		$elem2.after($placeholder);
+		$elem1.after($elem2);
+		$placeholder.replaceWith($elem1);
+
     }
 }
 

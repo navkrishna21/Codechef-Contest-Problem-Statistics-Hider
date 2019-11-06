@@ -29,64 +29,64 @@ $(function(){
 			chrome.storage.sync.set( {'shuffle_state' : 'off' });
 		}
 	});
-
+	
 	$("#hide-button").change(function() {
 
-    	if(this.checked) {
-    		
+		if(this.checked) {
+
+
+				chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
+
+					let shuffle="no";
+
+				if($('#shuffle-button').is(':checked')){
+
+					shuffle="yes"
+				}
+
+
+				chrome.tabs.sendMessage(tabs[0].id, {todo: "hideStatistics", shuffle : shuffle},function(){
+
+					var last_error=console.log(chrome.runtime.lastError);
+
+					if(last_error){
+						console.log(last_error.message);
+					}
+					else{
+
+						chrome.storage.sync.set( {'hide_state' : 'on' } ,function(){
+							$('#hidebutton-status').text('Problem statistics are hidden');
+						});
+					}
+
+
+				});
+
+			});
+
+		}
+		else{
 
 			chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
 
-				let shuffle="no";
+				chrome.tabs.sendMessage(tabs[0].id, {todo: "showStatistics"},function(){
 
-	        	if($('#shuffle-button').is(':checked')){
+					var last_error=console.log(chrome.runtime.lastError);
 
-	        		shuffle="yes"
-	        	}
-	        	
+						if(last_error){
+							console.log(last_error.message);
+						}
+						else{
 
-	        	chrome.tabs.sendMessage(tabs[0].id, {todo: "hideStatistics", shuffle : shuffle},function(){
-	        		
-	        		var last_error=console.log(chrome.runtime.lastError);
+							chrome.storage.sync.set({'hide_state' : 'off' } ,function(){
 
-	        		if(last_error){
-	        			console.log(last_error.message);
-	        		}
-	        		else{
-	        			
-	        			chrome.storage.sync.set( {'hide_state' : 'on' } ,function(){
-	        				$('#hidebutton-status').text('Problem statistics are hidden');
-	        			});
-	        		}
-	        		
-	        		
-	        	});
-	    	
-	    	});
+								$('#hidebutton-status').text('Toggle to hide problem statistics')
+							});
+						}
+				});
 
-    	}
-    	else{
-
-    		chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
-
-            	chrome.tabs.sendMessage(tabs[0].id, {todo: "showStatistics"},function(){
-
-            		var last_error=console.log(chrome.runtime.lastError);
-
-	        		if(last_error){
-	        			console.log(last_error.message);
-	        		}
-	        		else{
-
-	        			chrome.storage.sync.set({'hide_state' : 'off' } ,function(){
-       
-            				$('#hidebutton-status').text('Toggle to hide problem statistics')
-            			});
-	        		}
-            	});
-        	
-        	});
-    	}
+			});
+		}
 	});
 
 })

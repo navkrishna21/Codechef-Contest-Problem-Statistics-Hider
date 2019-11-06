@@ -35,9 +35,9 @@ $(function(){
 		if(this.checked) {
 
 
-				chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
+			chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
 
-					let shuffle="no";
+				let shuffle="no";
 
 				if($('#shuffle-button').is(':checked')){
 
@@ -73,16 +73,16 @@ $(function(){
 
 					var last_error=console.log(chrome.runtime.lastError);
 
-						if(last_error){
-							console.log(last_error.message);
-						}
-						else{
+					if(last_error){
+						console.log(last_error.message);
+					}
+					else{
 
-							chrome.storage.sync.set({'hide_state' : 'off' } ,function(){
+						chrome.storage.sync.set({'hide_state' : 'off' } ,function(){
 
-								$('#hidebutton-status').text('Toggle to hide problem statistics')
-							});
-						}
+							$('#hidebutton-status').text('Toggle to hide problem statistics')
+						});
+					}
 				});
 
 			});

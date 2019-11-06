@@ -22,11 +22,11 @@ $(function(){
 	$('#shuffle-button').change(function() {
 		
 		if(this.checked){
-			chrome.storage.sync.set( {'shuffle_state' : 'on' });
+			chrome.storage.sync.set({'shuffle_state' : 'on' });
 
 		}
 		else{
-			chrome.storage.sync.set( {'shuffle_state' : 'off' });
+			chrome.storage.sync.set({'shuffle_state' : 'off' });
 		}
 	});
 	
